@@ -38,6 +38,6 @@ while True:
             print("✅ Recebido Stop! Finalizando conexão...")
             break
     except sr.UnknownValueError:
-        print("Eu não entendi o que você disse. Finalizando conexão...")
+        print("Comando de voz não reconhecido. Reiniciando o programa...")
     except sr.RequestError as e:
         print("Não foi possível obter resultados; {0}".format(e))

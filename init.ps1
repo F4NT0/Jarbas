@@ -26,6 +26,6 @@ pip install -q --disable-pip-version-check speechrecognition pyautogui pyaudio
 python jarbas.py
 
 # Finalizando o programa
-Write-Host "Jarbas finalizado!"
+Write-Host "JARBAS ENCERRADO COM SUCESSO!"
 
 
