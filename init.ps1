@@ -4,7 +4,7 @@
 
 # Variáveis
 $EmojiIcon = [System.Convert]::toInt32("2705",16) # Emoji de check
-$conteudo = Get-Content -Path "ascii.txt"
+$conteudo = Get-Content "C:\Users\Gabriel_Stundner\source\repos\GITHUB\Jarbas\ascii.txt"
 
 Write-Host ""
 
