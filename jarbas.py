@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import pyautogui
 import pyaudio
+from colorama import Fore, Style
 
 # Criado um recognizer para reconhecer a fala
 recognizer = sr.Recognizer()
@@ -8,14 +9,16 @@ recognizer = sr.Recognizer()
 mic = sr.Microphone()
 # Ajusta o microfone para o ruído ambiente
 while True:
-    print("Lista de comandos ")
-    print("Nina - Inicia o script de manter o computador ligado")
-    print("Papa - Finaliza o script de manter o computador ligado")
-    print("Stop - Finaliza o programa")
-    print("Teams - Abre o Microsoft Teams")
-    print("Work Time - Abre o Visual Studio Code")
+    print("LISTA DE COMANDOS: ")
+    print(Fore.GREEN + "┌─────────────────────────────────────────────────────────────────┐")
+    print(Fore.GREEN + "| ➡️ Nina - Inicia o script de manter o computador ligado         |")      
+    print(Fore.GREEN + "| ➡️ Papa - Finaliza o script de manter o computador ligado       |")
+    print(Fore.GREEN + "| ➡️ Stop - Finaliza o programa                                   |")
+    print(Fore.GREEN + "| ➡️ Teams - Abre o Microsoft Teams                               |")
+    print(Fore.GREEN + "| ➡️ Work Time - Abre o Visual Studio Code                        |")
+    print(Fore.GREEN + "└─────────────────────────────────────────────────────────────────┘" + Style.RESET_ALL)
     with mic as source:
-        print("🎤 Ouvindo...")
+        print(Fore.RED + "\n🎤 ESPERANDO MENSAGEM...\n")
         recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
     # Tenta reconhecer a fala
@@ -45,9 +48,11 @@ while True:
         # Se o texto dito for "stop", finaliza o programa
         if text == "stop":
             print("✅ Recebido Stop! Finalizando conexão...")
+            pyautogui.hotkey("win", "r")
+            pyautogui.write("powershell.exe Get-Process -Name \"WindowsTerminal\" | Stop-Process -Force")
             break
 
-        # Se o texto for "teams", abre o microsoft teams
+        # Se o texto for "work time", abre o visual studio code
         if text == "work time":
             print("✅ Recebido work time! Abrindo o Visual Studio Code...")
             pyautogui.hotkey("win", "r")
@@ -60,6 +65,7 @@ while True:
             pyautogui.hotkey("win", "r")
             pyautogui.write("c:\\Users\\Gabriel_Stundner\\AppData\Roaming\\Microsoft\Windows\\Start Menu\\Programs\\Microsoft Teams (work or school).lnk")
             pyautogui.press("enter")
+
     except sr.UnknownValueError:
         print("Comando de voz não reconhecido. Reiniciando o programa...")
     except sr.RequestError as e:
