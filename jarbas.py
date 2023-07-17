@@ -29,7 +29,7 @@ while True:
         if text == "Nina":
             print("✅ Recebido Nina! Iniciando o script de manter o computador ligado...")
             pyautogui.hotkey("win", "r")
-            pyautogui.write("powershell.exe C:\\Users\\Gabriel_Stundner\\source\\repos\\GITHUB\\Jarbas\\runNoteAlive.bat")
+            pyautogui.write("powershell -NoExit -Command \"$host.UI.RawUI.WindowTitle = 'Nina'; C:\\Users\\Gabriel_Stundner\\source\\repos\\GITHUB\\Jarbas\\runNoteAlive.bat\"")
             pyautogui.press("enter")
         
         # Se o texto dito for "Papa", finaliza o script de manter o computador ligado
@@ -39,7 +39,7 @@ while True:
             pyautogui.write("powershell.exe Get-Process -Name \"notepad\" | Stop-Process -Force")
             pyautogui.press("enter")
             pyautogui.hotkey("win", "r")
-            pyautogui.write("powershell.exe Get-Process -Name \"WindowsTerminal\" | Stop-Process -Force")
+            pyautogui.write("taskkill /fi \"WINDOWTITLE eq Nina\"")
             pyautogui.press("enter")
         
         # Se o texto dito for "stop", finaliza o programa
@@ -49,7 +49,7 @@ while True:
 
         # Se o texto for "teams", abre o microsoft teams
         if text == "work time":
-            print("✅ Recebido Teams! Abrindo o Microsoft Teams...")
+            print("✅ Recebido work time! Abrindo o Visual Studio Code...")
             pyautogui.hotkey("win", "r")
             pyautogui.write("code")
             pyautogui.press("enter")
