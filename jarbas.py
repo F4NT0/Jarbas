@@ -7,7 +7,6 @@ from colorama import Fore, Style
 recognizer = sr.Recognizer()
 # Criado um microfone para ouvir a fala
 mic = sr.Microphone()
-# Ajusta o microfone para o ruído ambiente
 while True:
     print("LISTA DE COMANDOS: ")
     print(Fore.GREEN + "┌─────────────────────────────────────────────────────────────────┐")
@@ -18,7 +17,7 @@ while True:
     print(Fore.GREEN + "| ➡️ Work Time - Abre o Visual Studio Code                        |")
     print(Fore.GREEN + "└─────────────────────────────────────────────────────────────────┘" + Style.RESET_ALL)
     with mic as source:
-        print(Fore.RED + "\n🎤 ESPERANDO MENSAGEM...\n")
+        print(Fore.RED + "\n🎤 ESPERANDO MENSAGEM...\n" + Style.RESET_ALL)
         recognizer.adjust_for_ambient_noise(source)
         audio = recognizer.listen(source)
     # Tenta reconhecer a fala
@@ -26,7 +25,7 @@ while True:
         # Passa o áudio para o reconhecedor de padroes do speech_recognition
         text = recognizer.recognize_google(audio)
         # Se a fala for reconhecida, apresenta o texto
-        print("You said: {}".format(text))
+        # print("You said: {}".format(text))
 
         # Se o texto dito for "Nina", inicia o script de manter o computador ligado
         if text == "Nina":
