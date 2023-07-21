@@ -43,14 +43,14 @@ while True:
             pyautogui.press("enter")
         
         # Se o texto dito for "Papa", finaliza o script de manter o computador ligado
-        if "papa" in text:
+        if "papa" in text or "Papa" in text:
             winsound.Beep(400,1000)
             print("✅ Recebido Papa! Finalizando o script de manter o computador ligado...")
             pyautogui.hotkey("win", "r")
-            pyautogui.write("powershell.exe Get-Process -Name \"notepad\" | Stop-Process -Force")
+            pyautogui.write("taskkill /fi \"WINDOWTITLE eq Nina\"")
             pyautogui.press("enter")
             pyautogui.hotkey("win", "r")
-            pyautogui.write("taskkill /fi \"WINDOWTITLE eq Nina\"")
+            pyautogui.write("powershell.exe Get-Process -Name \"notepad\" | Stop-Process -Force")
             pyautogui.press("enter")
         
         # Se o texto dito for "stop", finaliza o programa
